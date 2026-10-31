@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "name": "Hình hang mới: tim, giọt nước, bán nguyệt, bo góc, SVG",
+  "seed": 31,
+  "duration": 16,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    {
+      "id": "heart",
+      "x": 280,
+      "y": 330,
+      "shape": { "kind": "heart", "radius": 200 },
+      "marbles": { "count": 900, "colors": ["#ff4d6d", "#ff8fa3"] }
+    },
+    {
+      "id": "drop",
+      "x": 800,
+      "y": 340,
+      "shape": { "kind": "drop", "radius": 210 },
+      "marbles": { "count": 900, "colors": ["#3fa7ff", "#9ad1ff"] }
+    },
+    {
+      "id": "moon",
+      "x": 280,
+      "y": 900,
+      "shape": { "kind": "moon", "radius": 220 },
+      "marbles": { "count": 900, "colors": ["#ffd23f"] }
+    },
+    {
+      "id": "box",
+      "x": 800,
+      "y": 900,
+      "shape": { "kind": "rounded", "radius": 200, "aspect": 0.6, "corner": 0.3 },
+      "marbles": { "count": 900, "colors": ["#4dd98b"] }
+    },
+    {
+      "id": "svg",
+      "x": 540,
+      "y": 1500,
+      "shape": { "kind": "path", "radius": 300, "d": "M50 0 L61 35 L98 35 L68 57 L79 91 L50 70 L21 91 L32 57 L2 35 L39 35 Z" },
+      "marbles": { "count": 1300, "colors": ["#c77dff", "#e0b0ff"] }
+    }
+  ],
+  "flows": [],
+  "events": []
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "name": "Bảng Galton: lưới chốt đổ vào hang chia 9 ngăn",
+  "seed": 41,
+  "duration": 26,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "effects": { "tails": true },
+  "caves": [
+    {
+      "id": "A",
+      "x": 540,
+      "y": 300,
+      "shape": { "kind": "drop", "radius": 230 },
+      "valves": [{ "width": 46 }],
+      "marbles": { "count": 1200, "colors": ["#ffd23f", "#ffb703"] }
+    },
+    {
+      "id": "B",
+      "x": 540,
+      "y": 1560,
+      "shape": { "kind": "rounded", "radius": 440, "aspect": 0.62, "corner": 0.08 },
+      "dividers": { "count": 9, "height": 0.75 },
+      "paint": { "mode": "gradient", "palette": "fire", "direction": "x" }
+    }
+  ],
+  "flows": [{ "from": "A", "to": "B", "kind": "pegs", "spread": 330, "paint": { "at": 0.95 } }],
+  "events": [{ "t": 1, "do": "valve.open", "cave": "A" }]
+}

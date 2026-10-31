@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "name": "Thác nhiều tầng: một tách hai, hai tách bốn",
+  "seed": 6,
+  "duration": 24,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    {
+      "id": "T",
+      "x": 540,
+      "y": 300,
+      "shape": { "kind": "circle", "radius": 210 },
+      "valves": [{ "id": "l", "x": -40, "width": 60 }, { "id": "r", "x": 40, "width": 60 }],
+      "marbles": { "count": 1400, "colors": ["#ff4d5e", "#ffd23f", "#3fa7ff", "#4dd98b"] }
+    },
+    {
+      "id": "L",
+      "x": 280,
+      "y": 860,
+      "shape": { "kind": "polygon", "sides": 6, "radius": 150 },
+      "valves": [{ "id": "l", "x": -55, "width": 46 }, { "id": "r", "x": 55, "width": 46 }]
+    },
+    {
+      "id": "R",
+      "x": 800,
+      "y": 860,
+      "shape": { "kind": "polygon", "sides": 6, "radius": 150 },
+      "valves": [{ "id": "l", "x": -55, "width": 46 }, { "id": "r", "x": 55, "width": 46 }]
+    },
+    {
+      "id": "D1",
+      "x": 135,
+      "y": 1560,
+      "shape": { "kind": "circle", "radius": 118 },
+      "paint": { "mode": "rainbow", "fit": "shared" }
+    },
+    {
+      "id": "D2",
+      "x": 405,
+      "y": 1560,
+      "shape": { "kind": "circle", "radius": 118 },
+      "paint": { "mode": "rainbow", "fit": "shared" }
+    },
+    {
+      "id": "D3",
+      "x": 675,
+      "y": 1560,
+      "shape": { "kind": "circle", "radius": 118 },
+      "paint": { "mode": "rainbow", "fit": "shared" }
+    },
+    {
+      "id": "D4",
+      "x": 945,
+      "y": 1560,
+      "shape": { "kind": "circle", "radius": 118 },
+      "paint": { "mode": "rainbow", "fit": "shared" }
+    }
+  ],
+  "flows": [
+    { "from": "T", "to": "L", "kind": "pipe", "valve": "l" },
+    { "from": "T", "to": "R", "kind": "pipe", "valve": "r" },
+    { "from": "L", "to": "D1", "kind": "pipe", "valve": "l", "paint": {} },
+    { "from": "L", "to": "D2", "kind": "pipe", "valve": "r", "paint": {} },
+    { "from": "R", "to": "D3", "kind": "pipe", "valve": "l", "paint": {} },
+    { "from": "R", "to": "D4", "kind": "pipe", "valve": "r", "paint": {} }
+  ],
+  "events": [
+    { "t": 1, "do": "valve.open", "cave": "T" },
+    { "t": 5, "do": "valve.open", "cave": "L" },
+    { "t": 5, "do": "valve.open", "cave": "R" }
+  ]
+}

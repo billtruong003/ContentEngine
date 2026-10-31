@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "name": "Theme candy: Nhiều về một: ba hang đổ về một bát, sơn ô cờ",
+  "seed": 2,
+  "duration": 22,
+  "frame": {
+    "width": 1080,
+    "height": 1920,
+    "background": "#10131a"
+  },
+  "caves": [
+    {
+      "id": "A",
+      "x": 200,
+      "y": 380,
+      "shape": {
+        "kind": "polygon",
+        "sides": 6,
+        "radius": 165
+      },
+      "valves": [
+        {
+          "width": 56
+        }
+      ],
+      "marbles": {
+        "count": 800,
+        "colors": [
+          "#ff4d5e",
+          "#ff7a85"
+        ]
+      }
+    },
+    {
+      "id": "B",
+      "x": 540,
+      "y": 380,
+      "shape": {
+        "kind": "polygon",
+        "sides": 6,
+        "radius": 165
+      },
+      "valves": [
+        {
+          "width": 56
+        }
+      ],
+      "marbles": {
+        "count": 800,
+        "colors": [
+          "#ffd23f",
+          "#ffe27a"
+        ]
+      }
+    },
+    {
+      "id": "C",
+      "x": 880,
+      "y": 380,
+      "shape": {
+        "kind": "polygon",
+        "sides": 6,
+        "radius": 165
+      },
+      "valves": [
+        {
+          "width": 56
+        }
+      ],
+      "marbles": {
+        "count": 800,
+        "colors": [
+          "#3fa7ff",
+          "#7cc3ff"
+        ]
+      }
+    },
+    {
+      "id": "BIG",
+      "x": 540,
+      "y": 1380,
+      "shape": {
+        "kind": "circle",
+        "radius": 330
+      },
+      "paint": {
+        "mode": "checker",
+        "colors": [
+          "#ff4d5e",
+          "#f5f5f5"
+        ],
+        "cell": 56
+      }
+    }
+  ],
+  "flows": [
+    {
+      "from": "A",
+      "to": "BIG",
+      "kind": "pipe",
+      "paint": {}
+    },
+    {
+      "from": "B",
+      "to": "BIG",
+      "kind": "waterfall",
+      "paint": {}
+    },
+    {
+      "from": "C",
+      "to": "BIG",
+      "kind": "pipe",
+      "paint": {}
+    }
+  ],
+  "events": [
+    {
+      "t": 1.5,
+      "do": "valve.open",
+      "cave": "B"
+    },
+    {
+      "t": 2.5,
+      "do": "valve.open",
+      "cave": "A"
+    },
+    {
+      "t": 3.5,
+      "do": "valve.open",
+      "cave": "C"
+    }
+  ],
+  "theme": "candy",
+  "captions": [
+    {
+      "kind": "title",
+      "text": "Theme candy"
+    },
+    {
+      "kind": "counter",
+      "cave": "BIG",
+      "text": "{n} bi"
+    }
+  ]
+}

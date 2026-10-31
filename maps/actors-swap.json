@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "name": "Nhân vật: blob đỏ qua máy hoá blob xanh",
+  "seed": 3,
+  "duration": 16,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "physics": { "marbleRadius": 12, "restitution": 0.25 },
+  "caves": [
+    { "id": "A", "x": 540, "y": 420, "shape": { "kind": "polygon", "sides": 6, "radius": 280 },
+      "valves": [{ "width": 110 }],
+      "marbles": { "count": 230, "colors": ["#ffffff"], "actors": { "pack": "blobs", "characters": ["red"] } } },
+    { "id": "B", "x": 540, "y": 1500, "shape": { "kind": "circle", "radius": 320 } }
+  ],
+  "flows": [
+    { "from": "A", "to": "B", "kind": "pipe", "via": [[700, 900]], "swap": { "character": "blue", "at": 0.5 } }
+  ],
+  "events": [
+    { "t": 1.5, "do": "valve.open", "cave": "A" }
+  ]
+}

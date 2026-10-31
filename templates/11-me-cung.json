@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "name": "Mê cung: ba ngả, chỉ một ngả về đích",
+  "seed": 11,
+  "duration": 24,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    {
+      "id": "A",
+      "x": 540,
+      "y": 280,
+      "shape": { "kind": "circle", "radius": 190 },
+      "valves": [{ "id": "l", "x": -110, "width": 46 }, { "id": "m", "width": 46 }, { "id": "r", "x": 110, "width": 46 }],
+      "marbles": { "count": 1100, "colors": ["#ff4d5e", "#ffd23f", "#3fa7ff", "#4dd98b"] }
+    },
+    { "id": "X1", "x": 150, "y": 1050, "shape": { "kind": "circle", "radius": 110 } },
+    {
+      "id": "J",
+      "x": 560,
+      "y": 930,
+      "shape": { "kind": "polygon", "sides": 4, "radius": 130, "rotation": 45 },
+      "valves": [{ "id": "l", "x": -40, "width": 46 }, { "id": "r", "x": 40, "width": 46 }]
+    },
+    { "id": "X2", "x": 950, "y": 1150, "shape": { "kind": "circle", "radius": 110 } },
+    { "id": "X3", "x": 220, "y": 1650, "shape": { "kind": "circle", "radius": 110 } },
+    {
+      "id": "GOAL",
+      "x": 720,
+      "y": 1640,
+      "shape": { "kind": "star", "points": 5, "radius": 220, "inner": 0.55 },
+      "paint": { "mode": "rainbow" }
+    }
+  ],
+  "flows": [
+    { "from": "A", "to": "X1", "kind": "pipe", "valve": "l", "via": [[300, 600], [170, 780]] },
+    { "from": "A", "to": "J", "kind": "pipe", "valve": "m", "via": [[620, 620]] },
+    { "from": "A", "to": "X2", "kind": "pipe", "valve": "r", "via": [[860, 560], [760, 800], [960, 920]] },
+    { "from": "J", "to": "X3", "kind": "pipe", "valve": "l", "via": [[380, 1260], [250, 1420]] },
+    { "from": "J", "to": "GOAL", "kind": "pipe", "valve": "r", "via": [[760, 1180], [640, 1330]], "paint": {} }
+  ],
+  "events": [{ "t": 1, "do": "valve.open", "cave": "A" }, { "t": 4, "do": "valve.open", "cave": "J" }]
+}

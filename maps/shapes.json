@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "name": "Các hình hang: tam giác tới bát giác và ngôi sao",
+  "seed": 7,
+  "duration": 8,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    { "id": "tri", "x": 280, "y": 400, "shape": { "kind": "polygon", "sides": 3, "radius": 220 },
+      "marbles": { "count": 900, "colors": ["#ff4d5e"] } },
+    { "id": "sq", "x": 800, "y": 400, "shape": { "kind": "polygon", "sides": 4, "radius": 210, "rotation": 45 },
+      "marbles": { "count": 900, "colors": ["#ffd23f"] } },
+    { "id": "pent", "x": 280, "y": 960, "shape": { "kind": "polygon", "sides": 5, "radius": 220 },
+      "marbles": { "count": 900, "colors": ["#3fa7ff"] } },
+    { "id": "hex", "x": 800, "y": 960, "shape": { "kind": "polygon", "sides": 6, "radius": 220 },
+      "marbles": { "count": 900, "colors": ["#4dd98b"] } },
+    { "id": "oct", "x": 280, "y": 1520, "shape": { "kind": "polygon", "sides": 8, "radius": 220 },
+      "marbles": { "count": 900, "colors": ["#c77dff"] } },
+    { "id": "star", "x": 800, "y": 1520, "shape": { "kind": "star", "points": 5, "radius": 230, "inner": 0.55 },
+      "marbles": { "count": 900, "colors": ["#ff9f43"] } }
+  ],
+  "events": []
+}

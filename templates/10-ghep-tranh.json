@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "name": "Ghép tranh: sáu mảnh, đầy hết thì lộ hình lớn",
+  "seed": 10,
+  "duration": 30,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    {
+      "id": "H",
+      "x": 540,
+      "y": 430,
+      "shape": { "kind": "polygon", "sides": 8, "radius": 400, "rotation": 22.5 },
+      "valves": [{ "id": "v1", "x": -210, "width": 40 }, { "id": "v2", "width": 34 }, { "id": "v3", "x": 210, "width": 40 }],
+      "marbles": { "count": 4400, "colors": ["#9aa3b5", "#c9d0de"] }
+    },
+    {
+      "id": "A1",
+      "x": 330,
+      "y": 1000,
+      "shape": { "kind": "polygon", "sides": 4, "radius": 120 },
+      "valves": [{ "width": 34 }],
+      "paint": { "mode": "image", "image": "placeholder-crewmate-red.webp", "fit": "shared", "background": "#e9edf5" },
+      "funnel": false
+    },
+    {
+      "id": "B1",
+      "x": 330,
+      "y": 1210,
+      "shape": { "kind": "polygon", "sides": 4, "radius": 120 },
+      "paint": { "mode": "image", "image": "placeholder-crewmate-red.webp", "fit": "shared", "background": "#e9edf5" }
+    },
+    {
+      "id": "A2",
+      "x": 540,
+      "y": 1000,
+      "shape": { "kind": "polygon", "sides": 4, "radius": 120 },
+      "valves": [{ "width": 34 }],
+      "paint": { "mode": "image", "image": "placeholder-crewmate-red.webp", "fit": "shared", "background": "#e9edf5" },
+      "funnel": false
+    },
+    {
+      "id": "B2",
+      "x": 540,
+      "y": 1210,
+      "shape": { "kind": "polygon", "sides": 4, "radius": 120 },
+      "paint": { "mode": "image", "image": "placeholder-crewmate-red.webp", "fit": "shared", "background": "#e9edf5" }
+    },
+    {
+      "id": "A3",
+      "x": 750,
+      "y": 1000,
+      "shape": { "kind": "polygon", "sides": 4, "radius": 120 },
+      "valves": [{ "width": 34 }],
+      "paint": { "mode": "image", "image": "placeholder-crewmate-red.webp", "fit": "shared", "background": "#e9edf5" },
+      "funnel": false
+    },
+    {
+      "id": "B3",
+      "x": 750,
+      "y": 1210,
+      "shape": { "kind": "polygon", "sides": 4, "radius": 120 },
+      "paint": { "mode": "image", "image": "placeholder-crewmate-red.webp", "fit": "shared", "background": "#e9edf5" }
+    }
+  ],
+  "flows": [
+    { "from": "H", "to": "A1", "kind": "waterfall", "valve": "v1", "paint": {} },
+    { "from": "A1", "to": "B1", "kind": "waterfall" },
+    { "from": "H", "to": "A2", "kind": "waterfall", "valve": "v2", "paint": {} },
+    { "from": "A2", "to": "B2", "kind": "waterfall" },
+    { "from": "H", "to": "A3", "kind": "waterfall", "valve": "v3", "paint": {} },
+    { "from": "A3", "to": "B3", "kind": "waterfall" }
+  ],
+  "events": [
+    { "t": 1.5, "do": "valve.open", "cave": "H" },
+    { "t": 1, "do": "valve.open", "cave": "A1" },
+    { "t": 5.15, "do": "valve.close", "cave": "A1" },
+    { "t": 7.2, "do": "valve.close", "cave": "H", "valve": "v1" },
+    { "t": 1, "do": "valve.open", "cave": "A2" },
+    { "t": 5.85, "do": "valve.close", "cave": "A2" },
+    { "t": 9.45, "do": "valve.close", "cave": "H", "valve": "v2" },
+    { "t": 1, "do": "valve.open", "cave": "A3" },
+    { "t": 5.15, "do": "valve.close", "cave": "A3" },
+    { "t": 7.15, "do": "valve.close", "cave": "H", "valve": "v3" }
+  ]
+}

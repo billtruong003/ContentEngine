@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "name": "Ba hang lục giác đổ về một bát lớn",
+  "seed": 42,
+  "duration": 20,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    { "id": "A", "x": 200, "y": 380, "shape": { "kind": "polygon", "sides": 6, "radius": 170 },
+      "valves": [{ "width": 60 }], "marbles": { "count": 870, "colors": ["#ff4d5e", "#ff7a85"] } },
+    { "id": "B", "x": 540, "y": 380, "shape": { "kind": "polygon", "sides": 6, "radius": 170 },
+      "valves": [{ "width": 60 }], "marbles": { "count": 870, "colors": ["#ffd23f", "#ffe27a"] } },
+    { "id": "C", "x": 880, "y": 380, "shape": { "kind": "polygon", "sides": 6, "radius": 170 },
+      "valves": [{ "width": 60 }], "marbles": { "count": 870, "colors": ["#3fa7ff", "#7cc3ff"] } },
+    { "id": "BIG", "x": 540, "y": 1400, "shape": { "kind": "circle", "radius": 430 },
+      "marbles": { "count": 2390, "colors": ["#e9edf5", "#c9d0de"] } }
+  ],
+  "flows": [
+    { "from": "A", "to": "BIG", "kind": "pipe" },
+    { "from": "B", "to": "BIG", "kind": "pipe" },
+    { "from": "C", "to": "BIG", "kind": "waterfall" }
+  ],
+  "events": [
+    { "t": 1.5, "do": "valve.open", "cave": "B" },
+    { "t": 2.5, "do": "valve.open", "cave": "A" },
+    { "t": 3.5, "do": "valve.open", "cave": "C" }
+  ]
+}

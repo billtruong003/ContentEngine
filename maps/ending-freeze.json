@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "name": "Kết thúc đóng băng: đống bi đông lại, nghiêng rồi rơi",
+  "seed": 62,
+  "duration": 20,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "ending": { "kind": "freeze", "t": 13 },
+  "caves": [
+    {
+      "id": "A",
+      "x": 540,
+      "y": 420,
+      "shape": { "kind": "drop", "radius": 260 },
+      "valves": [{ "width": 60 }],
+      "marbles": { "count": 1400, "colors": ["#e9edf5", "#c9d0de"] }
+    },
+    {
+      "id": "B",
+      "x": 540,
+      "y": 1380,
+      "shape": { "kind": "star", "points": 5, "radius": 360, "inner": 0.55 },
+      "paint": { "mode": "stripes", "palette": "ocean", "bands": 7 }
+    }
+  ],
+  "flows": [{ "from": "A", "to": "B", "kind": "pipe", "via": [[700, 800]], "paint": { "at": 0.7 } }],
+  "events": [{ "t": 1, "do": "valve.open", "cave": "A" }]
+}

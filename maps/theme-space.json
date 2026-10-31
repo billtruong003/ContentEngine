@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "name": "Theme space: Một chảy một: lục giác thành ngôi sao, sơn sọc",
+  "seed": 1,
+  "duration": 18,
+  "frame": {
+    "width": 1080,
+    "height": 1920,
+    "background": "#10131a"
+  },
+  "caves": [
+    {
+      "id": "A",
+      "x": 540,
+      "y": 480,
+      "shape": {
+        "kind": "polygon",
+        "sides": 6,
+        "radius": 210
+      },
+      "valves": [
+        {
+          "width": 56
+        }
+      ],
+      "marbles": {
+        "count": 1200,
+        "colors": [
+          "#ff4d5e",
+          "#ffd23f",
+          "#3fa7ff",
+          "#4dd98b"
+        ]
+      }
+    },
+    {
+      "id": "B",
+      "x": 540,
+      "y": 1420,
+      "shape": {
+        "kind": "star",
+        "points": 5,
+        "radius": 300,
+        "inner": 0.55
+      },
+      "paint": {
+        "mode": "stripes",
+        "palette": "neon",
+        "bands": 7
+      }
+    }
+  ],
+  "flows": [
+    {
+      "from": "A",
+      "to": "B",
+      "kind": "waterfall",
+      "paint": {
+        "at": 0.5
+      }
+    }
+  ],
+  "events": [
+    {
+      "t": 1,
+      "do": "valve.open",
+      "cave": "A"
+    }
+  ],
+  "theme": "space",
+  "captions": [
+    {
+      "kind": "title",
+      "text": "Theme space"
+    },
+    {
+      "kind": "counter",
+      "cave": "B",
+      "text": "{n} bi"
+    }
+  ]
+}

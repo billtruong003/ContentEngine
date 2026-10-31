@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "Băng chuyền gạt đưa bi từ hang thấp lên hang cao",
+  "seed": 5,
+  "duration": 30,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    { "id": "A", "x": 190, "y": 1180, "shape": { "kind": "polygon", "sides": 6, "radius": 150 },
+      "valves": [{ "width": 50 }], "marbles": { "count": 670, "colors": ["#c77dff", "#e0b0ff"] } },
+    { "id": "B", "x": 900, "y": 500, "shape": { "kind": "circle", "radius": 150 } }
+  ],
+  "flows": [
+    { "from": "A", "to": "B", "kind": "conveyor" }
+  ],
+  "events": [
+    { "t": 1.0, "do": "valve.open", "cave": "A" }
+  ]
+}

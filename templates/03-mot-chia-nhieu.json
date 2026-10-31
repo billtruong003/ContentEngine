@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "name": "Một chia nhiều: bát lớn tách thành ba hình",
+  "seed": 3,
+  "duration": 20,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    {
+      "id": "BIG",
+      "x": 540,
+      "y": 520,
+      "shape": { "kind": "circle", "radius": 390 },
+      "valves": [{ "id": "left", "x": -200, "width": 50 }, { "id": "mid", "width": 50 }, { "id": "right", "x": 200, "width": 50 }],
+      "marbles": { "count": 2000, "colors": ["#e9edf5", "#c9d0de"] }
+    },
+    {
+      "id": "L",
+      "x": 200,
+      "y": 1560,
+      "shape": { "kind": "polygon", "sides": 5, "radius": 175 },
+      "paint": { "mode": "gradient", "palette": "fire", "direction": "y" }
+    },
+    {
+      "id": "M",
+      "x": 540,
+      "y": 1560,
+      "shape": { "kind": "polygon", "sides": 6, "radius": 165 },
+      "paint": { "mode": "gradient", "palette": "ocean", "direction": "y" }
+    },
+    {
+      "id": "R",
+      "x": 880,
+      "y": 1560,
+      "shape": { "kind": "star", "points": 5, "radius": 190, "inner": 0.6 },
+      "paint": { "mode": "gradient", "palette": "pastel" }
+    }
+  ],
+  "flows": [
+    { "from": "BIG", "to": "L", "kind": "pipe", "valve": "left", "paint": {} },
+    { "from": "BIG", "to": "M", "kind": "waterfall", "valve": "mid", "paint": {} },
+    { "from": "BIG", "to": "R", "kind": "pipe", "valve": "right", "paint": {} }
+  ],
+  "events": [{ "t": 1, "do": "valve.open", "cave": "BIG" }]
+}

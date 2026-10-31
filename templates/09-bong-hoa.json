@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "name": "Bông hoa: năm cánh đổ vào nhụy, nhụy tỏa xuống hai lá",
+  "seed": 9,
+  "duration": 26,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    {
+      "id": "P1",
+      "x": 213,
+      "y": 566,
+      "shape": { "kind": "circle", "radius": 105 },
+      "valves": [{ "width": 44 }],
+      "marbles": { "count": 320, "colors": ["#ff4d5e"] }
+    },
+    {
+      "id": "P2",
+      "x": 375,
+      "y": 452,
+      "shape": { "kind": "circle", "radius": 105 },
+      "valves": [{ "width": 44 }],
+      "marbles": { "count": 320, "colors": ["#ff9f43"] }
+    },
+    {
+      "id": "P3",
+      "x": 540,
+      "y": 420,
+      "shape": { "kind": "circle", "radius": 105 },
+      "valves": [{ "width": 44 }],
+      "marbles": { "count": 320, "colors": ["#ffd23f"] }
+    },
+    {
+      "id": "P4",
+      "x": 705,
+      "y": 452,
+      "shape": { "kind": "circle", "radius": 105 },
+      "valves": [{ "width": 44 }],
+      "marbles": { "count": 320, "colors": ["#4dd98b"] }
+    },
+    {
+      "id": "P5",
+      "x": 867,
+      "y": 566,
+      "shape": { "kind": "circle", "radius": 105 },
+      "valves": [{ "width": 44 }],
+      "marbles": { "count": 320, "colors": ["#3fa7ff"] }
+    },
+    {
+      "id": "N",
+      "x": 540,
+      "y": 1100,
+      "shape": { "kind": "circle", "radius": 165 },
+      "valves": [{ "id": "l", "x": -70, "width": 46 }, { "id": "r", "x": 70, "width": 46 }]
+    },
+    { "id": "L1", "x": 290, "y": 1640, "shape": { "kind": "polygon", "sides": 4, "radius": 185, "rotation": 45 } },
+    { "id": "L2", "x": 790, "y": 1640, "shape": { "kind": "polygon", "sides": 4, "radius": 185, "rotation": 45 } }
+  ],
+  "flows": [
+    { "from": "P1", "to": "N", "kind": "pipe" },
+    { "from": "P2", "to": "N", "kind": "pipe" },
+    { "from": "P3", "to": "N", "kind": "pipe" },
+    { "from": "P4", "to": "N", "kind": "pipe" },
+    { "from": "P5", "to": "N", "kind": "pipe" },
+    { "from": "N", "to": "L1", "kind": "pipe", "valve": "l" },
+    { "from": "N", "to": "L2", "kind": "pipe", "valve": "r" }
+  ],
+  "events": [
+    { "t": 1, "do": "valve.open", "cave": "P1" },
+    { "t": 1.6, "do": "valve.open", "cave": "P2" },
+    { "t": 2.2, "do": "valve.open", "cave": "P3" },
+    { "t": 2.8, "do": "valve.open", "cave": "P4" },
+    { "t": 3.4, "do": "valve.open", "cave": "P5" },
+    { "t": 9, "do": "valve.open", "cave": "N" }
+  ]
+}

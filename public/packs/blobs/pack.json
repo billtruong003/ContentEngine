@@ -1,0 +1,78 @@
+{
+  "name": "blobs",
+  "characters": {
+    "blue": {
+      "expressions": {
+        "default": "blue.svg",
+        "blink": "blue@blink.svg",
+        "hit": "blue@hit.svg",
+        "scared": "blue@scared.svg",
+        "sleep": "blue@sleep.svg"
+      },
+      "sounds": {
+        "hit": "blue.hit.wav"
+      }
+    },
+    "green": {
+      "expressions": {
+        "default": "green.svg",
+        "blink": "green@blink.svg",
+        "hit": "green@hit.svg",
+        "scared": "green@scared.svg",
+        "sleep": "green@sleep.svg"
+      },
+      "sounds": {
+        "hit": "green.hit.wav"
+      }
+    },
+    "orange": {
+      "expressions": {
+        "default": "orange.svg",
+        "blink": "orange@blink.svg",
+        "hit": "orange@hit.svg",
+        "scared": "orange@scared.svg",
+        "sleep": "orange@sleep.svg"
+      },
+      "sounds": {
+        "hit": "orange.hit.wav"
+      }
+    },
+    "purple": {
+      "expressions": {
+        "default": "purple.svg",
+        "blink": "purple@blink.svg",
+        "hit": "purple@hit.svg",
+        "scared": "purple@scared.svg",
+        "sleep": "purple@sleep.svg"
+      },
+      "sounds": {
+        "hit": "purple.hit.wav"
+      }
+    },
+    "red": {
+      "expressions": {
+        "default": "red.svg",
+        "blink": "red@blink.svg",
+        "hit": "red@hit.svg",
+        "scared": "red@scared.svg",
+        "sleep": "red@sleep.svg"
+      },
+      "sounds": {
+        "hit": "red.hit.wav"
+      }
+    },
+    "yellow": {
+      "expressions": {
+        "default": "yellow.svg",
+        "blink": "yellow@blink.svg",
+        "hit": "yellow@hit.svg",
+        "scared": "yellow@scared.svg",
+        "sleep": "yellow@sleep.svg"
+      },
+      "sounds": {
+        "hit": "yellow.hit.wav"
+      }
+    }
+  },
+  "unsorted": []
+}

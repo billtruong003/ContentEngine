@@ -1,0 +1,78 @@
+{
+  "name": "crewmates",
+  "characters": {
+    "black": {
+      "expressions": {
+        "default": "black.webp"
+      },
+      "sounds": {}
+    },
+    "blue": {
+      "expressions": {
+        "default": "blue.webp"
+      },
+      "sounds": {}
+    },
+    "brown": {
+      "expressions": {
+        "default": "brown.webp"
+      },
+      "sounds": {}
+    },
+    "cyan": {
+      "expressions": {
+        "default": "cyan.webp"
+      },
+      "sounds": {}
+    },
+    "green": {
+      "expressions": {
+        "default": "green.webp"
+      },
+      "sounds": {}
+    },
+    "lime": {
+      "expressions": {
+        "default": "lime.webp"
+      },
+      "sounds": {}
+    },
+    "orange": {
+      "expressions": {
+        "default": "orange.webp"
+      },
+      "sounds": {}
+    },
+    "pink": {
+      "expressions": {
+        "default": "pink.webp"
+      },
+      "sounds": {}
+    },
+    "purple": {
+      "expressions": {
+        "default": "purple.webp"
+      },
+      "sounds": {}
+    },
+    "red": {
+      "expressions": {
+        "default": "red.webp"
+      },
+      "sounds": {}
+    },
+    "white": {
+      "expressions": {
+        "default": "white.webp"
+      },
+      "sounds": {}
+    },
+    "yellow": {
+      "expressions": {
+        "default": "yellow.webp"
+      },
+      "sounds": {}
+    }
+  },
+  "unsorted": []
+}

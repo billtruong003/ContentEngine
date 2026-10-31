@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "name": "Một hang chảy qua ống uốn lượn xuống một hang",
+  "seed": 5,
+  "duration": 20,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    { "id": "A", "x": 300, "y": 420, "shape": { "kind": "star", "points": 6, "radius": 240, "inner": 0.62 },
+      "valves": [{ "width": 56 }], "marbles": { "count": 1280, "colors": ["#c77dff", "#e0b0ff", "#ff7ad9"] } },
+    { "id": "B", "x": 600, "y": 1450, "shape": { "kind": "circle", "radius": 330 },
+      "paint": { "mode": "rainbow" } }
+  ],
+  "flows": [
+    { "from": "A", "to": "B", "kind": "pipe", "via": [[520, 880], [260, 1010]], "paint": { "at": 0.7 } }
+  ],
+  "events": [
+    { "t": 1.0, "do": "valve.open", "cave": "A" }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "name": "Hành trình dài: map dài gấp đôi màn hình, camera đi theo bi",
+  "seed": 12,
+  "duration": 34,
+  "frame": { "width": 1080, "height": 3600, "background": "#10131a" },
+  "camera": { "height": 1920, "follow": true, "zoom": { "cave": "D", "t": 28, "scale": 1.6 } },
+  "caves": [
+    {
+      "id": "A",
+      "x": 540,
+      "y": 300,
+      "shape": { "kind": "polygon", "sides": 6, "radius": 200 },
+      "valves": [{ "width": 56 }],
+      "marbles": { "count": 1000, "colors": ["#ff4d5e", "#ffd23f", "#3fa7ff", "#4dd98b"] }
+    },
+    {
+      "id": "B",
+      "x": 260,
+      "y": 1250,
+      "shape": { "kind": "polygon", "sides": 4, "radius": 160, "rotation": 45 },
+      "valves": [{ "width": 56 }]
+    },
+    { "id": "C", "x": 800, "y": 2150, "shape": { "kind": "polygon", "sides": 5, "radius": 170 }, "valves": [{ "width": 56 }] },
+    {
+      "id": "D",
+      "x": 540,
+      "y": 3250,
+      "shape": { "kind": "star", "points": 6, "radius": 260, "inner": 0.6 },
+      "paint": { "mode": "stripes", "palette": "candy", "direction": "x", "bands": 9 }
+    }
+  ],
+  "flows": [
+    { "from": "A", "to": "B", "kind": "pipe", "via": [[700, 700]] },
+    { "from": "B", "to": "C", "kind": "pipe", "via": [[300, 1650]] },
+    { "from": "C", "to": "D", "kind": "pipe", "paint": {} }
+  ],
+  "events": [
+    { "t": 1, "do": "valve.open", "cave": "A" },
+    { "t": 7, "do": "valve.open", "cave": "B" },
+    { "t": 14, "do": "valve.open", "cave": "C" }
+  ]
+}

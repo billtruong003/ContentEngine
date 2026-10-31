@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "name": "Vòng tròn: bi chạy vòng mãi qua cổng dịch chuyển",
+  "seed": 5,
+  "duration": 30,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    {
+      "id": "A",
+      "x": 540,
+      "y": 420,
+      "shape": { "kind": "polygon", "sides": 6, "radius": 170 },
+      "valves": [{ "x": -60, "width": 56 }],
+      "marbles": { "count": 560, "colors": ["#ff4d5e", "#ffd23f", "#3fa7ff", "#4dd98b"] }
+    },
+    {
+      "id": "B",
+      "x": 260,
+      "y": 1020,
+      "shape": { "kind": "polygon", "sides": 4, "radius": 150, "rotation": 45 },
+      "valves": [{ "x": 40, "width": 56 }]
+    },
+    { "id": "C", "x": 760, "y": 1480, "shape": { "kind": "circle", "radius": 150 }, "valves": [{ "width": 56 }] }
+  ],
+  "flows": [
+    { "from": "A", "to": "B", "kind": "pipe" },
+    { "from": "B", "to": "C", "kind": "pipe" },
+    { "from": "C", "to": "A", "kind": "portal" }
+  ],
+  "events": [
+    { "t": 1, "do": "valve.open", "cave": "A" },
+    { "t": 2.5, "do": "valve.open", "cave": "B" },
+    { "t": 4, "do": "valve.open", "cave": "C" }
+  ]
+}

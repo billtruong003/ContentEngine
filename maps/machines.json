@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "name": "Máy mới: phân loại theo màu, nhân đôi, đổi hình, trộn màu",
+  "seed": 51,
+  "duration": 26,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    {
+      "id": "A",
+      "x": 330,
+      "y": 330,
+      "shape": { "kind": "heart", "radius": 200 },
+      "valves": [{ "width": 50 }],
+      "marbles": { "count": 600, "colors": ["#ff4d5e", "#3fa7ff"] }
+    },
+    { "id": "R", "x": 180, "y": 1000, "shape": { "kind": "circle", "radius": 140 }, "valves": [{ "width": 50 }] },
+    { "id": "B", "x": 500, "y": 1080, "shape": { "kind": "moon", "radius": 170 } },
+    { "id": "R2", "x": 200, "y": 1620, "shape": { "kind": "rounded", "radius": 170, "aspect": 0.8, "corner": 0.25 } },
+    {
+      "id": "P",
+      "x": 830,
+      "y": 380,
+      "shape": { "kind": "drop", "radius": 220 },
+      "valves": [{ "width": 50 }],
+      "marbles": { "count": 700, "colors": ["#ffd23f", "#3fa7ff"] }
+    },
+    { "id": "M", "x": 830, "y": 1580, "shape": { "kind": "polygon", "sides": 6, "radius": 180 } }
+  ],
+  "flows": [
+    { "from": "A", "to": "R", "kind": "portal", "only": ["#ff4d5e"] },
+    { "from": "A", "to": "B", "kind": "portal", "only": ["#3fa7ff"] },
+    { "from": "R", "to": "R2", "kind": "pipe", "double": { "at": 0.3 }, "shape": { "at": 0.7, "shape": "star" } },
+    { "from": "P", "to": "M", "kind": "zigzag", "turns": 3, "mix": { "at": 0.85 } }
+  ],
+  "events": [
+    { "t": 1, "do": "valve.open", "cave": "A" },
+    { "t": 1, "do": "valve.open", "cave": "P" },
+    { "t": 6, "do": "valve.open", "cave": "R" }
+  ]
+}

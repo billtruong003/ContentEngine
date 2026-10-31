@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "name": "Dây chuyền: tam giác, vuông, ngũ giác, tròn",
+  "seed": 4,
+  "duration": 26,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    {
+      "id": "A",
+      "x": 330,
+      "y": 300,
+      "shape": { "kind": "polygon", "sides": 3, "radius": 200 },
+      "valves": [{ "x": 30, "width": 50 }],
+      "marbles": { "count": 470, "colors": ["#ff4d5e", "#ffd23f", "#3fa7ff", "#4dd98b"] }
+    },
+    { "id": "B", "x": 700, "y": 760, "shape": { "kind": "polygon", "sides": 4, "radius": 165 }, "valves": [{ "width": 50 }] },
+    { "id": "C", "x": 370, "y": 1210, "shape": { "kind": "polygon", "sides": 5, "radius": 165 }, "valves": [{ "width": 50 }] },
+    { "id": "D", "x": 690, "y": 1660, "shape": { "kind": "circle", "radius": 160 }, "paint": { "mode": "rainbow" } }
+  ],
+  "flows": [
+    { "from": "A", "to": "B", "kind": "pipe" },
+    { "from": "B", "to": "C", "kind": "pipe" },
+    { "from": "C", "to": "D", "kind": "pipe", "paint": {} }
+  ],
+  "events": [
+    { "t": 1, "do": "valve.open", "cave": "A" },
+    { "t": 7, "do": "valve.open", "cave": "B" },
+    { "t": 13, "do": "valve.open", "cave": "C" }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "name": "Nhân vật: crewmate đứng thẳng hoá blob vàng",
+  "seed": 9,
+  "duration": 14,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "physics": { "marbleRadius": 14, "restitution": 0.2 },
+  "caves": [
+    { "id": "A", "x": 540, "y": 430, "shape": { "kind": "polygon", "sides": 5, "radius": 300 },
+      "valves": [{ "width": 120 }],
+      "marbles": { "count": 160, "colors": ["#ffffff"], "actors": { "pack": "crewmates", "upright": true, "scale": 1.3 } } },
+    { "id": "B", "x": 540, "y": 1480, "shape": { "kind": "polygon", "sides": 6, "radius": 330 } }
+  ],
+  "flows": [
+    { "from": "A", "to": "B", "kind": "waterfall", "swap": { "character": "blobs/yellow", "at": 0.6 } }
+  ],
+  "events": [
+    { "t": 1.5, "do": "valve.open", "cave": "A" }
+  ]
+}

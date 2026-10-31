@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "name": "Một bát lớn chia ra ba hang",
+  "seed": 11,
+  "duration": 20,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    { "id": "BIG", "x": 540, "y": 520, "shape": { "kind": "circle", "radius": 400 },
+      "valves": [{ "id": "left", "x": -200, "width": 50 }, { "id": "mid", "width": 50 }, { "id": "right", "x": 200, "width": 50 }],
+      "marbles": { "count": 2100, "colors": ["#ff4d5e", "#ffd23f", "#3fa7ff", "#4dd98b"] } },
+    { "id": "L", "x": 200, "y": 1560, "shape": { "kind": "polygon", "sides": 5, "radius": 175 } },
+    { "id": "M", "x": 540, "y": 1560, "shape": { "kind": "polygon", "sides": 6, "radius": 165 } },
+    { "id": "R", "x": 880, "y": 1560, "shape": { "kind": "star", "points": 5, "radius": 190, "inner": 0.6 } }
+  ],
+  "flows": [
+    { "from": "BIG", "valve": "left", "to": "L", "kind": "pipe" },
+    { "from": "BIG", "valve": "mid", "to": "M", "kind": "waterfall" },
+    { "from": "BIG", "valve": "right", "to": "R", "kind": "pipe" }
+  ],
+  "events": [
+    { "t": 1.0, "do": "valve.open", "cave": "BIG" }
+  ]
+}

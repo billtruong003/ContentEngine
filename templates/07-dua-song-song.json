@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "name": "Đua song song: ba đội, ba con đường, hang nào đầy trước",
+  "seed": 7,
+  "duration": 24,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    {
+      "id": "A",
+      "x": 180,
+      "y": 320,
+      "shape": { "kind": "polygon", "sides": 6, "radius": 140 },
+      "valves": [{ "width": 50 }],
+      "marbles": { "count": 550, "colors": ["#ff4d5e", "#ff7a85"] }
+    },
+    {
+      "id": "B",
+      "x": 540,
+      "y": 320,
+      "shape": { "kind": "polygon", "sides": 6, "radius": 140 },
+      "valves": [{ "width": 50 }],
+      "marbles": { "count": 550, "colors": ["#ffd23f", "#ffe27a"] }
+    },
+    {
+      "id": "C",
+      "x": 900,
+      "y": 320,
+      "shape": { "kind": "polygon", "sides": 6, "radius": 140 },
+      "valves": [{ "width": 50 }],
+      "marbles": { "count": 550, "colors": ["#3fa7ff", "#7cc3ff"] }
+    },
+    { "id": "A2", "x": 180, "y": 1600, "shape": { "kind": "circle", "radius": 140 } },
+    { "id": "B2", "x": 540, "y": 1600, "shape": { "kind": "circle", "radius": 140 } },
+    { "id": "C2", "x": 900, "y": 1600, "shape": { "kind": "circle", "radius": 140 } }
+  ],
+  "flows": [
+    { "from": "A", "to": "A2", "kind": "waterfall" },
+    { "from": "B", "to": "B2", "kind": "pipe", "via": [[620, 640], [450, 900], [620, 1160], [470, 1360]] },
+    { "from": "C", "to": "C2", "kind": "pipe", "via": [[990, 700], [820, 1000], [990, 1300]] }
+  ],
+  "events": [
+    { "t": 1, "do": "valve.open", "cave": "A" },
+    { "t": 1, "do": "valve.open", "cave": "B" },
+    { "t": 1, "do": "valve.open", "cave": "C" }
+  ]
+}

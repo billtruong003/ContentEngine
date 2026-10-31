@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "name": "Kết thúc vỡ hang: hình cầu vồng xong thì vỡ tung",
+  "seed": 61,
+  "duration": 20,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "effects": { "shake": true },
+  "ending": { "kind": "break", "t": 14 },
+  "caves": [
+    {
+      "id": "A",
+      "x": 540,
+      "y": 420,
+      "shape": { "kind": "polygon", "sides": 6, "radius": 240 },
+      "valves": [{ "width": 60 }],
+      "marbles": { "count": 1500, "colors": ["#e9edf5", "#c9d0de"] }
+    },
+    {
+      "id": "B",
+      "x": 540,
+      "y": 1400,
+      "shape": { "kind": "heart", "radius": 330 },
+      "paint": { "mode": "rainbow", "direction": "y" }
+    }
+  ],
+  "flows": [{ "from": "A", "to": "B", "kind": "waterfall", "paint": { "at": 0.6 } }],
+  "events": [{ "t": 1, "do": "valve.open", "cave": "A" }]
+}

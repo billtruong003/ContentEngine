@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "name": "Lưới chốt và zigzag, máy thu nhỏ, đuôi sáng, tia lửa",
+  "seed": 21,
+  "duration": 24,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "effects": { "tails": true, "sparks": true },
+  "caves": [
+    {
+      "id": "A",
+      "x": 540,
+      "y": 330,
+      "shape": { "kind": "circle", "radius": 230 },
+      "valves": [{ "id": "l", "x": -110, "width": 50 }, { "id": "r", "x": 110, "width": 50 }],
+      "marbles": { "count": 1600, "colors": ["#e9edf5", "#c9d0de"] }
+    },
+    {
+      "id": "L",
+      "x": 250,
+      "y": 1560,
+      "shape": { "kind": "polygon", "sides": 6, "radius": 190 },
+      "paint": { "mode": "stripes", "palette": "neon", "bands": 6 }
+    },
+    { "id": "R", "x": 800, "y": 1580, "shape": { "kind": "circle", "radius": 200 }, "paint": { "mode": "rainbow" } }
+  ],
+  "flows": [
+    { "from": "A", "valve": "l", "to": "L", "kind": "zigzag", "turns": 4, "swing": 110, "paint": { "at": 0.85 } },
+    {
+      "from": "A",
+      "valve": "r",
+      "to": "R",
+      "kind": "pegs",
+      "spread": 170,
+      "paint": { "at": 0.9 },
+      "size": { "at": 0.15, "scale": 0.7 }
+    }
+  ],
+  "events": [{ "t": 1, "do": "valve.open", "cave": "A" }]
+}

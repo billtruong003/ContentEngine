@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "name": "Ghép hình: ba hang đổ về một bát, hiện hình crewmate",
+  "seed": 42,
+  "duration": 26,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "physics": { "marbleRadius": 3 },
+  "caves": [
+    { "id": "A", "x": 200, "y": 380, "shape": { "kind": "polygon", "sides": 6, "radius": 170 },
+      "valves": [{ "width": 48 }], "marbles": { "count": 1500, "colors": ["#ff4d5e", "#ff7a85"] } },
+    { "id": "B", "x": 540, "y": 380, "shape": { "kind": "polygon", "sides": 6, "radius": 170 },
+      "valves": [{ "width": 48 }], "marbles": { "count": 1500, "colors": ["#ffd23f", "#ffe27a"] } },
+    { "id": "C", "x": 880, "y": 380, "shape": { "kind": "polygon", "sides": 6, "radius": 170 },
+      "valves": [{ "width": 48 }], "marbles": { "count": 1500, "colors": ["#3fa7ff", "#7cc3ff"] } },
+    { "id": "BIG", "x": 540, "y": 1380, "shape": { "kind": "polygon", "sides": 4, "radius": 230 },
+      "paint": { "mode": "image", "image": "placeholder-crewmate-red.webp", "fit": "contain", "background": "#e9edf5" } }
+  ],
+  "flows": [
+    { "from": "A", "to": "BIG", "kind": "pipe", "paint": {} },
+    { "from": "B", "to": "BIG", "kind": "pipe", "paint": {} },
+    { "from": "C", "to": "BIG", "kind": "waterfall", "paint": {} }
+  ],
+  "events": [
+    { "t": 1.5, "do": "valve.open", "cave": "B" },
+    { "t": 2.5, "do": "valve.open", "cave": "A" },
+    { "t": 3.5, "do": "valve.open", "cave": "C" }
+  ]
+}

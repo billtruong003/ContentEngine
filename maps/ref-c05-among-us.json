@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "name": "Crewmate đỏ thành impostor đen",
+  "seed": 105,
+  "duration": 106,
+  "frame": {
+    "width": 1920,
+    "height": 1080,
+    "background": "#5a5a5a"
+  },
+  "physics": {
+    "marbleRadius": 4,
+    "stiffness": 80
+  },
+  "ground": {
+    "color": "#5a5a5a",
+    "rim": "#5a5a5a",
+    "rimWidth": 1
+  },
+  "look": {
+    "marble": "flat",
+    "shadow": false,
+    "pattern": "plain",
+    "backdrop": [
+      "#2b2b2b"
+    ]
+  },
+  "caves": [
+    {
+      "id": "A",
+      "x": 400,
+      "y": 420,
+      "shape": {
+        "kind": "circle",
+        "radius": 360
+      },
+      "valves": [
+        {
+          "x": 300,
+          "width": 46
+        }
+      ],
+      "funnel": 6,
+      "marbles": {
+        "count": 5300,
+        "colors": [
+          "#888888"
+        ],
+        "paint": {
+          "mode": "image",
+          "image": "placeholder-crewmate-red.webp",
+          "fit": "contain",
+          "background": "#e9edf5"
+        }
+      }
+    },
+    {
+      "id": "B",
+      "x": 1420,
+      "y": 640,
+      "shape": {
+        "kind": "circle",
+        "radius": 296
+      },
+      "paint": {
+        "mode": "image",
+        "image": "placeholder-crewmate-black.png",
+        "fit": "contain",
+        "background": "#e9edf5"
+      }
+    }
+  ],
+  "flows": [
+    {
+      "from": "A",
+      "to": "B",
+      "kind": "conveyor",
+      "at": 0,
+      "speed": 160,
+      "paint": {
+        "at": 0.9
+      }
+    }
+  ],
+  "events": [
+    {
+      "t": 2.5,
+      "do": "valve.open",
+      "cave": "A"
+    }
+  ]
+}

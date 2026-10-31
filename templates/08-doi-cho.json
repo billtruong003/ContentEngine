@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "name": "Đổi chỗ: hai hang trao bi cho nhau",
+  "seed": 8,
+  "duration": 26,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "caves": [
+    {
+      "id": "A",
+      "x": 250,
+      "y": 480,
+      "shape": { "kind": "polygon", "sides": 6, "radius": 170 },
+      "valves": [{ "width": 50 }],
+      "marbles": { "count": 800, "colors": ["#ff4d5e", "#ff7a85"] }
+    },
+    {
+      "id": "B",
+      "x": 830,
+      "y": 480,
+      "shape": { "kind": "star", "points": 5, "radius": 200, "inner": 0.6 },
+      "valves": [{ "width": 50 }],
+      "marbles": { "count": 800, "colors": ["#3fa7ff", "#7cc3ff"] }
+    },
+    { "id": "S", "x": 540, "y": 1450, "shape": { "kind": "circle", "radius": 230 }, "valves": [{ "width": 56 }] }
+  ],
+  "flows": [
+    { "from": "A", "to": "S", "kind": "pipe" },
+    { "from": "B", "to": "A", "kind": "portal" },
+    { "from": "S", "to": "B", "kind": "portal" }
+  ],
+  "events": [
+    { "t": 1, "do": "valve.open", "cave": "A" },
+    { "t": 7, "do": "valve.close", "cave": "A" },
+    { "t": 7.5, "do": "valve.open", "cave": "B" },
+    { "t": 14, "do": "valve.close", "cave": "B" },
+    { "t": 14.5, "do": "valve.open", "cave": "S" }
+  ]
+}

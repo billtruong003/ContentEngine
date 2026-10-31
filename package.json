@@ -1,0 +1,29 @@
+{
+  "name": "marble-factory",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/packs.ts && vite",
+    "build": "tsc && vite build",
+    "typecheck": "tsc",
+    "test": "node scripts/determinism.ts",
+    "check": "node scripts/check.ts",
+    "render": "node scripts/packs.ts && node scripts/render.ts",
+    "packs": "node scripts/packs.ts",
+    "fmt": "node scripts/fmt.ts",
+    "batch": "node scripts/packs.ts && node scripts/batch.ts",
+    "fill": "node scripts/fill.ts"
+  },
+  "dependencies": {
+    "@dimforge/rapier2d-deterministic-compat": "^0.21.0",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/three": "^0.186.0",
+    "puppeteer-core": "^25.16.0",
+    "typescript": "5.9",
+    "vite": "^8.3.5"
+  }
+}

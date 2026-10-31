@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "name": "Đổi trọng lực, vệt sơn, rung, cuối video lật màu",
+  "seed": 22,
+  "duration": 26,
+  "frame": { "width": 1080, "height": 1920, "background": "#10131a" },
+  "effects": { "stains": true, "shake": true },
+  "caves": [
+    {
+      "id": "A",
+      "x": 540,
+      "y": 380,
+      "shape": { "kind": "polygon", "sides": 6, "radius": 240 },
+      "valves": [{ "width": 60 }],
+      "marbles": { "count": 1600, "colors": ["#ff4d5e", "#ffd23f", "#3fa7ff", "#4dd98b"] }
+    },
+    {
+      "id": "B",
+      "x": 540,
+      "y": 1450,
+      "shape": { "kind": "circle", "radius": 330 },
+      "paint": {
+        "mode": "image",
+        "image": "placeholder-crewmate-red.webp",
+        "fit": "contain",
+        "background": "#e9edf5",
+        "flip": { "t": 20, "mode": "checker", "colors": ["#ffd23f", "#10131a"], "cell": 48 }
+      }
+    }
+  ],
+  "flows": [{ "from": "A", "to": "B", "kind": "zigzag", "turns": 3, "swing": 150, "paint": { "at": 0.8 } }],
+  "events": [
+    { "t": 1, "do": "valve.open", "cave": "A" },
+    { "t": 5, "do": "gravity", "angle": 35 },
+    { "t": 7, "do": "gravity", "angle": -35 },
+    { "t": 9, "do": "gravity", "angle": 0 }
+  ]
+}

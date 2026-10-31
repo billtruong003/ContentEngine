@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marble Factory</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #0b0d12; overflow: hidden; }
+      #app { position: absolute; inset: 0; display: grid; place-items: center; }
+      #app canvas { display: block; }
+      #hud {
+        position: absolute; top: 12px; left: 12px; padding: 10px 12px; border-radius: 8px;
+        background: rgba(0, 0, 0, .55); color: #d7dbe4; font: 12px/1.6 ui-monospace, Consolas, monospace;
+        white-space: pre; pointer-events: none;
+      }
+      #hud .warn { color: #ffcc4d; }
+      #hud .err { color: #ff6b6b; }
+      #hud .ok { color: #6be38f; }
+      #bar {
+        position: absolute; left: 12px; right: 12px; bottom: 12px; height: 18px;
+        border-radius: 9px; background: rgba(255, 255, 255, .08); cursor: pointer;
+      }
+      #bar .rec { position: absolute; inset: 0 auto 0 0; border-radius: 9px; background: rgba(120, 160, 255, .25); }
+      #bar .head { position: absolute; top: -3px; width: 4px; height: 24px; margin-left: -2px; border-radius: 2px; background: #fff; }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="hud"></div>
+    <div id="bar"><div class="rec"></div><div class="head"></div></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
