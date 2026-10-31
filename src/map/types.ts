@@ -291,7 +291,7 @@ export interface MapDoc {
 export const DEFAULT_PHYSICS: Physics = {
   gravity: 3000,
   marbleRadius: 4,
-  friction: 0.1,
+  friction: 0.2,
   restitution: 0.1,
   drag: 0,
 };

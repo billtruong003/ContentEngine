@@ -246,7 +246,7 @@ function drawHud(): void {
   }
   if (paint) {
     lines.push(
-      paint.status === 'waiting' ? 'Ghép hình: đợi tính xong cả video...'
+      paint.status === 'waiting' ? `Ghép hình: đợi tính xong cả video${bakeRate > 0 ? `, còn khoảng ${Math.ceil((total - rec.frames) / bakeRate)} giây` : ''}...`
       : paint.status === 'failed' ? `<span class="err">Ghép hình lỗi: ${paint.message}</span>`
       : `Ghép hình: ${paint.painted} bi được sơn${report?.unpainted ? `, <span class="err">${report.unpainted} bi trong hang đích chưa qua máy sơn</span>` : ''}`,
     );

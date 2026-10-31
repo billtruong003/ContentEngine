@@ -439,24 +439,28 @@ export class Sim {
         this.anchorSteps[i] = this.stepIndex;
       }
       const resting = this.stepIndex - this.anchorSteps[i];
-      // Only a cave whose whole pile has stopped needs a shake (a marble balanced on a ridge between two valves, say).
-      // A pile that is still draining just has marbles waiting their turn; kicking those makes them hop about.
-      if (this.draining.size && resting < STUCK_STEPS) {
-        const cave = this.caveAt(x, y);
-        if (cave && this.draining.has(cave)) {
-          if (resting < SHAKE_STEPS) flowing.add(cave);
-          else waiting.push(i, cave);
-        }
+      const cave = this.draining.size || resting >= STUCK_STEPS ? this.caveAt(x, y) : null;
+      if (cave && this.draining.has(cave)) {
+        if (resting < SHAKE_STEPS) flowing.add(cave);
+        else waiting.push(i, cave);
+        return;
       }
-      const still = resting >= STUCK_STEPS && !this.broken;
-      const cave = still ? this.caveAt(x, y) : null;
-      const isStuck = still && (!cave || this.draining.has(cave)) ? 1 : 0;
+      const isStuck = resting >= STUCK_STEPS && !this.broken && !cave ? 1 : 0;
       if (isStuck !== this.stuck[i]) { this.stuck[i] = isStuck; changed = true; }
     });
+    // A draining cave whose pile still moves just has marbles waiting their turn: they are neither stuck nor in need
+    // of a shake. Only once the whole pile has stopped (a marble balanced on a ridge between two valves, say) do its
+    // resting marbles get a shake, and those resting too long count as stuck.
     for (let k = 0; k < waiting.length; k += 2) {
-      if (flowing.has(waiting[k + 1] as string)) continue;
-      const a = this.shake() * Math.PI;
-      this.marbles[waiting[k] as number].setLinvel({ x: (Math.cos(a) * SHAKE_SPEED) / PX_PER_METER, y: (Math.sin(a) * SHAKE_SPEED) / PX_PER_METER }, true);
+      const i = waiting[k] as number;
+      const stopped = !flowing.has(waiting[k + 1] as string);
+      const resting = this.stepIndex - this.anchorSteps[i];
+      if (stopped && resting < STUCK_STEPS) {
+        const a = this.shake() * Math.PI;
+        this.marbles[i].setLinvel({ x: (Math.cos(a) * SHAKE_SPEED) / PX_PER_METER, y: (Math.sin(a) * SHAKE_SPEED) / PX_PER_METER }, true);
+      }
+      const isStuck = stopped && resting >= STUCK_STEPS && !this.broken ? 1 : 0;
+      if (isStuck !== this.stuck[i]) { this.stuck[i] = isStuck; changed = true; }
     }
     if (changed) this.stuckVersion++;
   }

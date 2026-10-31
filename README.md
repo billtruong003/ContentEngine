@@ -110,7 +110,7 @@ Cả khung hình là một tấm đất đặc. Hang (`caves`) và đường n�
   - `pegs`: lưới chốt. Một máng rộng có các chốt tròn xếp so le, bi va vào chốt rồi tản ra hai bên. `spread` là nửa bề rộng đáy máng (px), bị giới hạn để đáy máng luôn nằm trên hang đích.
   - `wheel`: bánh xe múc. Bi rơi vào gầu ở phía gần, bánh quay đưa qua đỉnh rồi đổ ra cửa ở phía bên kia. Chỉnh `radius`, `arms` (số cánh), `speed` (độ/giây). Cửa ra nằm hơi thấp hơn tâm bánh, nên bánh xe không đưa bi lên cao hơn hang nguồn được. Muốn đưa bi lên cao thì dùng băng chuyền.
   - `portal`: cổng dịch chuyển. Bi rơi vào vòng tím dưới van thì hiện ra ở vòng tím ngay trên hang đích, đi được cả lên cao. Dùng cho vòng tròn và đổi chỗ: băng chuyền luôn chắn ngang giữa hang nguồn và hang đích, nên một vòng khép kín chỉ dùng ống và băng chuyền thì kiểu gì cũng có hai đường cắt nhau.
-- `physics`: `gravity` (trọng lực, mặc định 3000), `marbleRadius`, `friction` (ma sát, mặc định 0.1: càng thấp bi càng trơn), `restitution`, `drag` (lực cản không khí, mặc định 0). Muốn bi rơi chậm thì giảm `gravity` (vd 1500) hoặc tăng `drag` (vd 2 tới 4): bi rơi tới một tốc độ nhất định rồi không nhanh thêm.
+- `physics`: `gravity` (trọng lực, mặc định 3000), `marbleRadius`, `friction` (ma sát, mặc định 0.2; các map `ref-` dùng 0.1 cho bi trơn hơn), `restitution`, `drag` (lực cản không khí, mặc định 0). Muốn bi rơi chậm thì giảm `gravity` (vd 1500) hoặc tăng `drag` (vd 2 tới 4): bi rơi tới một tốc độ nhất định rồi không nhanh thêm.
 - `caves[].funnel`: góc đáy phễu (mặc định 40°) dẫn bi về van, `false` để giữ đáy phẳng.
 - Map đặt sai (băng chuyền cắt qua hang, dốc quá, tụt khỏi khung...) sẽ báo lỗi kèm cách sửa, không chạy.
 - `ground`: màu đất và màu viền.

@@ -52,6 +52,8 @@ Cách nhanh nhất là sửa từ map có sẵn rồi lưu thành tên mới.
 2. Chọn `ref-c01-spider-signal`. Đây là kiểu video 2 hang tròn: hang trái đầy bi xếp thành hình A, bi chảy qua băng chuyền sang hang phải và xếp thành hình B.
 3. Bấm **Chạy thử** (hoặc Ctrl+Enter) để xem bi chảy. Bấm **Sửa tiếp** (hoặc Esc) để quay lại sửa.
 
+Map có ghép hình phải tính xong cả video rồi mới phát được, vì máy cần biết trước mỗi viên bi sẽ nằm ở đâu. Với map `ref-` (5300 bi, 106 giây) mất khoảng 3 phút. Góc trên có ghi "còn khoảng N giây", cứ để đó chờ, app không bị treo.
+
 Các map kiểu này có tên bắt đầu bằng `ref-`:
 
 | Map | Hình đầu → Hình cuối |
@@ -150,6 +152,8 @@ Lệnh này chạy hết các map, báo số bi kẹt, bi rơi khỏi map và s�
 | Cổng 5173 đang bận | Có một editor khác đang chạy. Tắt nó, hoặc dùng luôn cái đang chạy |
 | Hang có viền đỏ trong editor | Map đặt sai, ví dụ băng chuyền cắt qua hang. Đọc dòng lỗi ở góc dưới, nó nói cách sửa |
 | Hình ở hang phải bị lủng | Hang chưa đủ bi. Tăng **Số bi** ở hang trái, hoặc thu nhỏ hang phải |
+| Bi chảy chậm, nhìn dính | Bấm chỗ trống trên bản đồ, ở bảng phải giảm **Ma sát** (map `ref-` đang để 0.1). Thấp quá thì bi dễ tràn ra gờ và kẹt |
+| Hộp xác nhận "Bỏ các thay đổi?" hiện ra khi mở map khác | Map đang sửa chưa lưu. Bấm Hủy rồi Lưu trước, hoặc OK để bỏ |
 | Hình lúc đầu bị lệch, trống một góc | Hang trái nhiều bi quá so với cỡ hang. Giảm **Số bi** hoặc phóng to hang |
 
 ---

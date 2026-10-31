@@ -41,6 +41,7 @@ type Drag =
   | { t: 'via'; flow: number; k: number }
   | { t: 'machine'; flow: number; kind: MachineKind };
 
+const PAINT_LABELS: Record<string, string> = { image: 'ảnh', rainbow: 'cầu vồng', gradient: 'chuyển màu', stripes: 'sọc', checker: 'ô cờ', depth: 'độ sâu' };
 const ACCENT = '#7aa2ff';
 const DANGER = '#ff5c6c';
 const PAINT = '#ffd23f';
@@ -123,8 +124,16 @@ export class Stage {
     ctx.fillStyle = '#07080c';
     ctx.fillRect(0, 0, w, h);
     ctx.setTransform(dpr * this.scale, 0, 0, dpr * this.scale, dpr * this.ox, dpr * this.oy);
-    const { width: fw, height: fh, background } = applyTheme(map).frame;
-    ctx.fillStyle = background;
+    const themed = applyTheme(map);
+    const { width: fw, height: fh, background } = themed.frame;
+    // The caves are holes in the ground: the video shows the backdrop through them, so the editor does too.
+    const backdrop = themed.look?.backdrop;
+    if (backdrop?.length) {
+      const g = ctx.createLinearGradient(0, 0, 0, fh);
+      g.addColorStop(0, backdrop[0]);
+      g.addColorStop(1, backdrop[backdrop.length - 1]);
+      ctx.fillStyle = g;
+    } else ctx.fillStyle = background;
     ctx.fillRect(0, 0, fw, fh);
 
     const layout = this.host.layout;
@@ -199,6 +208,7 @@ export class Stage {
       if (cave.marbles?.count) this.fillPolygon(pts, cave.marbles.colors[0] + '33');
       if (broken.has(cave.id)) this.polygon(pts, DANGER, 4, [10, 8]);
       else if (selected || hovered) this.polygon(pts, ACCENT, selected ? 4 : 2);
+      else this.polygon(pts, 'rgba(255,255,255,.22)', 1.5);
       this.label(cave);
       this.handle({ x: cave.x, y: bottomOf(cave) + CONNECT_GAP }, hovered || selected ? ACCENT : 'rgba(255,255,255,.35)', 'round', '+');
       if (selected) {
@@ -240,7 +250,8 @@ export class Stage {
     const notes = [
       cave.marbles?.count ? `${cave.marbles.count} bi` : '',
       cave.marbles?.actors ? cave.marbles.actors.pack : '',
-      cave.paint ? (cave.paint.mode === 'image' ? 'ghép ảnh' : 'cầu vồng') : '',
+      cave.marbles?.paint ? 'hình lúc đầu' : '',
+      cave.paint ? `ghép ${PAINT_LABELS[cave.paint.mode]}` : '',
     ].filter(Boolean);
     if (notes.length) {
       ctx.font = `${13 * px}px system-ui, sans-serif`;
