@@ -12,7 +12,7 @@ export interface PanelHost {
   selection: Selection;
   packs: { name: string; characters: string[] }[];
   targets: string[];
-  run(label: string, cmds: Command[]): void;
+  run(label: string, cmds: Command[]): unknown[] | null;
   select(s: Selection): void;
   duplicate(id: string, mirrored: boolean): void;
 }
@@ -43,7 +43,7 @@ function cavePanel(el: HTMLElement, host: PanelHost, cave: Cave): void {
   const s = cave.shape;
   el.append(
     title(`Hang ${id}`),
-    row('Tên', text('id', id, (v) => { host.run(`Đổi tên hang ${id}`, [{ op: 'cave.rename', id, to: v }]); host.select({ kind: 'cave', id: v }); })),
+    row('Tên', text('id', id, (v) => { if (host.run(`Đổi tên hang ${id}`, [{ op: 'cave.rename', id, to: v }])) host.select({ kind: 'cave', id: v }); else host.select({ kind: 'cave', id }); })),
     row('Vị trí x, y', num('x', cave.x, (v) => set('Dời hang', { x: v })), num('y', cave.y, (v) => set('Dời hang', { y: v }))),
     row('Hình', select('shape', Object.entries(SHAPE_NAMES), s.kind, (kind) => {
       const r = s.radius;

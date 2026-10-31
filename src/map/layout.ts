@@ -154,6 +154,11 @@ export function buildLayout(map: MapDoc, { walls = true } = {}): Layout {
   const gates: Wall[] = [];
   const openings = new Map<string, Opening>();
   const carves: Carve[] = map.caves.map((cave) => {
+    const pts = outline(cave);
+    const { width, height } = map.frame;
+    if (pts.some((p) => p.x < 0 || p.x > width || p.y < 0 || p.y > height)) {
+      errors.push(`hang ${cave.id} tràn ra ngoài khung hình (${width}x${height}). Thu nhỏ hoặc dời hang vào trong.`);
+    }
     const own: Opening[] = [];
     (cave.valves ?? []).forEach((v, k) => {
       const id = valveId(v, k);
@@ -410,7 +415,7 @@ function wheel({ flow, opening: o, target: t }: Plan, marbleRadius: number): Bui
   const exit = { x: c.x + dir * R * 0.97 * Math.cos(out), y: c.y - R * 0.97 * Math.sin(out) };
   const lip = { x: c.x + dir * (R + 60), y: exit.y + 45 };
   if (t.y < lip.y + 40) return { error: `hang ${flow.to} cao quá: bánh xe chỉ đưa bi lên tới y≈${Math.round(lip.y)}. Hạ hang đích xuống hoặc tăng "radius".` };
-  if (dir * (t.x - lip.x) < 0) return { error: `hang ${flow.to} quá gần nguồn, bánh xe không có chỗ. Dời hang ra xa.` };
+  if (dir * (t.x - lip.x) < 0) return { error: `hang ${flow.to} quá sát nguồn theo chiều ngang, bánh xe không có chỗ. Dời hang đích sang ngang, xa hang nguồn hơn.` };
   const r = o.width / 2;
   const chute = Math.max(marbleRadius * 3.5, R * 0.22);
   const back = { x: o.mid.x - o.normal.x * 8, y: o.mid.y - o.normal.y * 8 };
@@ -516,7 +521,7 @@ function conveyor({ flow, opening: o, target: t, tgt }: Plan, map: MapDoc, caves
   const top = { x: topX, y: t.y - 30 - 0.35 * Math.abs(t.x - chuteX) - drop + tube / 2 };
   const chuteStart = { x: chuteX, y: top.y + drop - tube / 2 };
   if (dir * (top.x - o.mid.x) < tube) {
-    return { error: `hang ${tgt.id} quá gần, băng chuyền không có chỗ. Dời ra xa thêm ${Math.ceil(tube - dir * (top.x - o.mid.x))} px.` };
+    return { error: `hang ${tgt.id} quá sát nguồn theo chiều ngang, băng chuyền không có chỗ. Dời hang đích sang ngang thêm ${Math.ceil(tube - dir * (top.x - o.mid.x))} px.` };
   }
   if (top.y > o.mid.y) return { error: 'hang đích thấp hơn chỗ ra. Dùng "pipe" hoặc "waterfall".' };
 

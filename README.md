@@ -18,7 +18,7 @@ npm run fmt -- maps/ten-map.json   # viết lại file map cho dễ đọc
 Chọn map bằng `?map=<tên file không có .json>`, ví dụ `?map=one-to-three` hoặc `?map=conveyor`. Mở template bằng `?template=05-vong-tron`.
 Phóng to một vùng bằng `?view=x,y,w,h` (toạ độ khung hình), ví dụ `?map=one-to-one&view=200,700,400,300`.
 
-Phím: Space chạy/dừng · ← → tua 1 giây · `,` `.` từng khung · F tua x4 · R xem lại · Shift+R tính lại.
+Phím: Space chạy/dừng · ← → tua 1 giây · `,` `.` từng khung · F tua x4 · R xem lại · Shift+R tính lại · H ẩn bảng thông tin.
 
 Bi kẹt được tô đỏ: nằm yên 3 giây ở ngoài hang, hoặc trong một hang đã mở van (hang mở van thì phải xả hết). Cuối mỗi lần tính có báo cáo ở góc trên.
 

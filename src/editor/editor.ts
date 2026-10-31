@@ -280,13 +280,19 @@ function duplicate(id: string, mirror: boolean): void {
   if (!cave) return;
   const copy = structuredClone(cave);
   copy.id = nextId(map);
+  const r = cave.shape.radius;
   if (mirror) {
     copy.x = map.frame.width - cave.x;
+    if (Math.abs(copy.x - cave.x) < r) return toast(`Hang ${id} nằm giữa trục gương, lật ra sẽ trùng chỗ. Dời hang sang một bên trước.`, 'err');
     copy.shape = mirrored(copy.shape);
     copy.valves?.forEach((v) => { if (v.x) v.x = -v.x; });
   } else {
-    copy.x += 60;
-    copy.y += 60;
+    // Beside the original when there is room, so the copy does not sit on top of it.
+    const step = 2 * r + 40;
+    const fits = (x: number) => x - r >= 0 && x + r <= map.frame.width;
+    if (fits(cave.x + step)) copy.x += step;
+    else if (fits(cave.x - step)) copy.x -= step;
+    else { copy.x += 60; copy.y += 60; }
   }
   const { id: newId, x, y, shape, ...rest } = copy;
   const res = run(mirror ? `Lật gương hang ${id}` : `Nhân đôi hang ${id}`, [

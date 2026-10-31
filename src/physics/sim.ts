@@ -27,6 +27,8 @@ const MAX_SOUNDS_PER_STEP = 8;
 // that is meant to hold it (one whose valves are all closed, or that has none).
 const STUCK_STEPS = 180;
 const STUCK_MOVE_PX = 6;
+/** How far above a full cave (px) marbles backed up in its inlet still count as waiting, not stuck. */
+const QUEUE_PX = 80;
 /** A marble resting this long in a cave with an open valve gets a small shake, like a vibrator on a hopper. */
 const SHAKE_STEPS = 120;
 const SHAKE_SPEED = 250;
@@ -445,7 +447,7 @@ export class Sim {
         else waiting.push(i, cave);
         return;
       }
-      const isStuck = resting >= STUCK_STEPS && !this.broken && !cave ? 1 : 0;
+      const isStuck = resting >= STUCK_STEPS && !this.broken && !cave && !this.queued(x, y) ? 1 : 0;
       if (isStuck !== this.stuck[i]) { this.stuck[i] = isStuck; changed = true; }
     });
     // A draining cave whose pile still moves just has marbles waiting their turn: they are neither stuck nor in need
@@ -463,6 +465,11 @@ export class Sim {
       if (isStuck !== this.stuck[i]) { this.stuck[i] = isStuck; changed = true; }
     }
     if (changed) this.stuckVersion++;
+  }
+
+  /** Resting just above a cave that is not draining: the cave is full and this marble waits its turn in the inlet. */
+  private queued(x: number, y: number): boolean {
+    return this.areas.some((a) => !this.draining.has(a.id) && x >= a.minX && x <= a.maxX && y >= a.minY - QUEUE_PX && y <= a.maxY);
   }
 
   private caveAt(x: number, y: number): string | null {

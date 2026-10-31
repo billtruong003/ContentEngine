@@ -32,12 +32,18 @@ interface Handle {
   width: number;
   height: number;
   totalFrames: number;
+  settled: boolean;
+  duration: number;
+  needed: number;
   report: unknown;
   paint: unknown;
   sounds: number[];
   voices: string[];
   sound: SoundSet;
 }
+
+/** Longest video the exporter stretches a map to while waiting for its marbles to settle (seconds). */
+const MAX_DURATION = 600;
 
 const { names, out, scale, skipDone } = parseArgs(process.argv.slice(2));
 if (!names.length) {
@@ -58,6 +64,8 @@ const port = (server.httpServer!.address() as { port: number }).port;
 const browser = await puppeteer.launch({
   executablePath: chrome,
   headless: true,
+  // A long, crowded map keeps the page busy for minutes while it bakes.
+  protocolTimeout: 30 * 60_000,
   args: ['--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'],
 });
 
@@ -86,19 +94,33 @@ async function renderOne(browser: Browser, entry: string): Promise<void> {
   const folder = folderOf(entry);
   const name = basename(entry);
   const map = JSON.parse(readFileSync(`${folder}/${name}.json`, 'utf8')) as MapDoc;
-  const page = await browser.newPage();
-  page.on('pageerror', (e) => console.log(`  [trang] ${e}`));
-  await page.goto(`http://localhost:${port}/?${PARAM[folder]}=${encodeURIComponent(name)}&export=1&scale=${scale}`);
-  process.stdout.write(`… ${name}: đang tính mô phỏng`);
-  await page.waitForFunction('window.__marble', { timeout: 30 * 60_000, polling: 500 });
-  const handle = await page.evaluate(() => {
-    const h = (window as unknown as { __marble: Handle & { error?: string[]; frames?: unknown } }).__marble;
-    if (h.error) return { error: h.error };
-    const { frames: _, ...data } = h;
-    return data;
-  });
-  if ('error' in handle) throw new Error(`map lỗi: ${(handle.error as string[]).join('; ')}`);
-  const h = handle as Handle;
+  let page = await browser.newPage();
+  // Marbles still flowing when the run ends: run again long enough for them to settle, so the video ends after that.
+  let duration = 0;
+  let h: Handle;
+  for (;;) {
+    // A fresh tab each run: the previous one is still busy with its worker and textures.
+    if (duration) { await page.close(); page = await browser.newPage(); }
+    page.on('pageerror', (e) => console.log(`  [trang] ${e}`));
+    page.on('error', (e) => console.log(`
+  [trang sập] ${e.message}`));
+    await page.goto(`http://localhost:${port}/?${PARAM[folder]}=${encodeURIComponent(name)}&export=1&scale=${scale}${duration ? `&duration=${duration}` : ''}`);
+    process.stdout.write(`… ${name}: đang tính mô phỏng${duration ? ` lại với ${duration} s` : ''}`);
+    await page.waitForFunction('window.__marble', { timeout: 30 * 60_000, polling: 500 });
+    const handle = await page.evaluate(() => {
+      const h = (window as unknown as { __marble: Handle & { error?: string[]; frames?: unknown } }).__marble;
+      if (h.error) return { error: h.error };
+      const { frames: _, ...data } = h;
+      return data;
+    });
+    if ('error' in handle) throw new Error(`map lỗi: ${(handle.error as string[]).join('; ')}`);
+    h = handle as Handle;
+    if (h.settled || h.duration >= MAX_DURATION) break;
+    duration = Math.min(MAX_DURATION, Math.ceil(Math.max(h.needed, h.duration * 1.25)));
+    console.log(` bi chưa chảy xong lúc hết ${h.duration} s`);
+  }
+  if (!h.settled) console.log(`
+  ⚠ ${name}: tới ${MAX_DURATION} s bi vẫn chưa nằm yên, video dừng ở đó`);
   console.log(` xong (${((performance.now() - t0) / 1000).toFixed(0)} s)`);
 
   const wavPath = join(out, `${name}.sounds.wav`);

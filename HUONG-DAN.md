@@ -119,7 +119,7 @@ Xuất nhiều video một lần:
 npm run render -- "maps/ref-c*" --out output/2k --scale 1.33334
 ```
 
-Mỗi video 106 giây ở 2K mất khoảng 7 phút. Mỗi map ra 3 file:
+Video tự kết thúc khoảng 2 giây sau khi bi nằm yên, nên không có đoạn đứng hình ở cuối. Ô **Dài (giây)** ở bảng phải là độ dài tối đa: bi chảy lâu hơn số này thì video bị cắt trước khi xong, nên cứ để dư. Mỗi video khoảng 100 giây ở 2K mất chừng 7 phút. Mỗi map ra 3 file:
 
 - `.mp4`: video có tiếng, đăng được ngay.
 - `.jpg`: khung cuối, dùng làm thumbnail.
